@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StickmanHook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 0.5em 0;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .add-link {
+            margin-top: 1em;
+            text-align: center;
+        }
+        .add-link input[type="text"] {
+            padding: 0.5em;
+            margin: 0.5em;
+            width: calc(100% - 1em);
+        }
+        .add-link button {
+            padding: 0.5em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .add-link button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>StickmanHook</h1>
+    </header>
+    <div class="container">
+        <h2>Links</h2>
+        <ul id="linkList">
+            <li><a href="https://ixlmathgg.github.io/fish/" target="_blank">Fish</a></li>
+        </ul>
+        <div class="add-link">
+            <h2>Add a Website</h2>
+            <input type="text" id="urlInput" placeholder="Enter URL" />
+            <input type="text" id="nameInput" placeholder="Enter Website Name" />
+            <button onclick="addLink()">Add</button>
+        </div>
+    </div>
+
+    <script>
+        function addLink() {
+            const url = document.getElementById('urlInput').value;
+            const name = document.getElementById('nameInput').value;
+            if (url && name) {
+                const linkList = document.getElementById('linkList');
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = url;
+                a.target = "_blank";
+                a.textContent = name;
+                li.appendChild(a);
+                linkList.appendChild(li);
+                document.getElementById('urlInput').value = '';
+                document.getElementById('nameInput').value = '';
+            } else {
+                alert('Please enter both URL and name.');
+            }
+        }
+    </script>
+</body>
+</html>
